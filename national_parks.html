@@ -28,6 +28,36 @@
     </header>
 
     <h1>National Parks</h1>
+    
+    <form id="buttonForm">
+      <h4>Search by:</h4>
+<input type="radio" name="location" id="location" value="location" checked>
+<label for="location">Location</label>
+<input type="radio" name="type" id="type" value="type">
+<label for="type">Type</label>
+
+    </form>
+<form id="selectForm">
+      <select id="selectPark"></select>
+      <select id="selectType"></select>
+    </form>
+
+    
+    <table id="infoTable" class="table table-striped"```>
+      <thead>
+       <th>Location ID </th>
+       <th>Name</th>
+       <th>Address</th>
+       <th>Phone</th>
+       <th>Url</th>
+   </thead>
+   <tbody id="infoTableBody">
+
+   </tbody>
+
+
+   </table>
+
 
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
