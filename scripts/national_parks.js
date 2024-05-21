@@ -4,13 +4,17 @@ window.onload = () => {
 
     initParkselect();
 
+    initTypeSelect();
+
     //Grabbing the dropdowns individually from the html page
     let selectByLocation = document.querySelector("#selectPark");
 
     let selectByType = document.querySelector("#selectType");
 
     //once a option on the drop down is chosen the information will get displayed
-    selectByLocation.addEventListener("change", getInfoOffList)
+    selectByLocation.addEventListener("change", getInfoOffList);
+
+    selectByType.addEventListener("change", gettypeOffList);
 
 }
 function getInfoOffList(event) {
@@ -63,10 +67,11 @@ function getInfoOffList(event) {
         let cell4 = newRow.insertCell(3)
         cell4.innerHTML = `Phone: ${data.Phone}, Fax: ${data.Fax}`
 
+        //creating an if statement for the url section as some dont have any and I dont wanna show "undefined"
         let cell5 = newRow.insertCell(4)
-        if (typeof data.Visit === "undefined"){
+        if (!data.Visit) {
             cell5.innerHTML = "N/A"
-        }else{
+        } else {
             cell5.innerHTML = data.Visit;
         }
     }
@@ -128,17 +133,99 @@ function matchByStateName(nationalParksArray, state) {
     return matching;
 }
 
-/*
-     You can remove the following console.log() lines.
-     They are here to verify that we have access to the data
-     The data script files are located in the scripts/data directory
- */
 
-//log the locationsArray to the console (scripts/data/locationData.js)
-// console.log(locationsArray)
+//created a function for the first drop down, to input the states we choose from
+function initTypeSelect() {
 
-//log the parkTypesArray to the console (scripts/data/parkTypeData.js)
-// console.log(parkTypesArray)
+    //we are grabbing the dropdown from the HTML page to work with it
+    let selectByType = document.querySelector("#selectType");
+    //creating a element for the default option
+    let defaultOption = document.createElement("option");
 
-//log the nationalParksArray to the console (scripts/data/nationalParkData.js)
-// console.log(nationalParksArray)
+    //this is what we get back in the js when we ask for it
+    defaultOption.value = ""
+
+    //this is what the user actually selects in the dropdown
+    defaultOption.textContent = "-- Choose A Park Type--";
+
+    //add the option we created to the dropdown
+    selectByType.appendChild(defaultOption);
+
+    //write a loop to work with each individual category and build an option for it
+    parkTypesArray.forEach((park) => {
+
+        //create the new option for the category we are on in the loop
+        let newOption = document.createElement("option");
+
+        //set the value for the option
+        newOption.value = park;
+
+        //set what the user sees 
+        newOption.textContent = park;
+
+        selectByType.appendChild(newOption);
+
+
+    })
+}
+function gettypeOffList(event) {
+
+    //get the selected information from the dropdown which is also the event.target
+    let selectedType = event.target.value;
+
+    let matchingTypes = nationalParksArray.filter((type) => {
+
+        for (let i = 0; i < parkTypesArray.length; i++) {
+            if (type.LocationName.indexOf(selectedType) !== -1) {
+
+                return true
+            }
+            return false
+        }
+
+
+
+    })
+
+    //getting a hold of the table body so we can add rows to it for all the matching state info
+    let tableBody = document.querySelector("#infoTableBody");
+    //set the innterHTML to "" which clear it out
+    tableBody.innerHTML = "";
+
+    matchingTypes.forEach((type) => {
+
+        //running the function with the table that we grabbed from the HTML 
+        //now the "park" is going throught the list individually
+        buildTableRow(tableBody, type);
+
+    })
+}
+//function we are running to add the information from the nationalParkArray to the table
+    //tablebody is the html table we grabbed earlier
+    //data is a parameter that we run what we choose in it
+    function buildTableRow(tableBody, chosen) {
+
+        //create the row to hold the data
+        let newRow = tableBody.insertRow(-1);
+
+        let cell1 = newRow.insertCell(0);
+        //this is us displaying the text on the page that is collected from the data in JS
+        cell1.innerHTML = chosen.LocationID
+
+        let cell2 = newRow.insertCell(1);
+        cell2.innerHTML = chosen.LocationName
+
+        let cell3 = newRow.insertCell(2);
+        cell3.innerHTML = `${chosen.Address}, ${chosen.City}, ${chosen.State}, ${chosen.ZipCode}`
+
+        let cell4 = newRow.insertCell(3)
+        cell4.innerHTML = `Phone: ${chosen.Phone}, Fax: ${chosen.Fax}`
+
+        //creating an if statement for the url section as some dont have any and I dont wanna show "undefined"
+        let cell5 = newRow.insertCell(4)
+        if (!chosen.Visit) {
+            cell5.innerHTML = "N/A"
+        } else {
+            cell5.innerHTML = chosen.Visit;
+        }
+    }
