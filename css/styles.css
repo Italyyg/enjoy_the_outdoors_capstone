@@ -1,0 +1,15 @@
+#hero {
+    height: 440px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("../images/herodos.jpg");
+    background-attachment: fixed;
+    
+}
+#mission{
+    
+    font-weight: 500;
+    margin-top: 50px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
