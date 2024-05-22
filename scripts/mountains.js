@@ -61,6 +61,18 @@ function displayMountainCard(event) {
 
     });
 
+   let cordination= mountainsArray.forEach((coordinate)=>{
+
+    for(let i= 0; i< coordinate.coords.length; i++){
+        
+        console.log(coordinate.coords.lat)
+        console.log(coordinate.coords.lng)
+
+    };
+
+    
+});
+
  let wholeCard = document.createElement("div");
  wholeCard.classList.add("card", "text-center", "w-25");
 
@@ -98,6 +110,7 @@ footer2.innerText = `Effort : ${mountain.effort}`;
 
 let footer3= document.createElement("div")
 footer3.classList.add("card-footer", "text-body-secondary");
+
 
 footer3.innerText = mountain.coords
 

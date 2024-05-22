@@ -6,7 +6,7 @@ window.onload = () => {
 
     initTypeSelect();
 
-    hideOrShowElement();
+
 
     //Grabbing the dropdowns individually from the html page
     let selectByLocation = document.querySelector("#selectPark");
@@ -95,7 +95,9 @@ function initParkselect() {
     let defaultOption = document.createElement("option");
 
     //this is what we get back in the js when we ask for it
-    defaultOption.value = ""
+    defaultOption.value = "";
+
+    selectByLocation.length = 0;
 
     //this is what the user actually selects in the dropdown
     defaultOption.textContent = "-- Choose Park Location--";
@@ -151,11 +153,12 @@ function initTypeSelect() {
     //creating a element for the default option
     let defaultOption = document.createElement("option");
 
-    //this is what we get back in the js when we ask for it
-    defaultOption.value = ""
-
     //this is what the user actually selects in the dropdown
     defaultOption.textContent = "-- Choose A Park Type--";
+
+    //this is what we get back in the js when we ask for it
+    defaultOption.value = "0";
+
 
     //add the option we created to the dropdown
     selectByType.appendChild(defaultOption);
@@ -204,6 +207,10 @@ function gettypeOffList(event) {
     let tableBody = document.querySelector("#infoTableBody");
     //set the innterHTML to "" which clear it out
     tableBody.innerHTML = "";
+    //we are grabbing the dropdown from the HTML page to work with it
+    let selectByType = document.querySelector("#selectType");
+
+
 
     matchingTypes.forEach((type) => {
 
@@ -247,32 +254,4 @@ function buildTableRow(tableBody, chosen) {
 }
 
 
-//This function will hide or show an HTML element on the page
-//Just pass it the id of the element you want to show/hide
-function hideOrShowElement() {
-    let el = document.querySelector("#selectPark");
-    let la = document.querySelector("#selectType");
-    let locationButton = document.querySelector("#location");
-    let parkTypeButton = document.querySelector("#type");
 
-
-    if (locationButton.checked) {
-        el.style.display = "block";
-    } else {
-        el.style.display = "none";
-    }
-
-    // if(parkTypeButton.value === "type"){
-    //     la.style.display = "block";
-    // }else {
-    //     la.style.display = "none";
-    // }
-
-    // function yesnoCheck() {
-    //     if (document.getElementById('yesCheck').checked) {
-    //         document.getElementById('ifYes').style.display = 'block';
-    //     } else {
-    //         document.getElementById('ifYes').style.display = 'none';
-    //     }
-    // }
-}
