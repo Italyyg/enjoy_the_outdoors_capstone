@@ -61,31 +61,20 @@ function displayMountainCard(event) {
 
     });
 
-   let cordination= mountainsArray.forEach((coordinate)=>{
-
-    for(let i= 0; i< coordinate.coords.length; i++){
-        
-        console.log(coordinate.coords.lat)
-        console.log(coordinate.coords.lng)
-
-    };
-
-    
-});
 
  let wholeCard = document.createElement("div");
- wholeCard.classList.add("card", "text-center", "w-25");
+ wholeCard.classList.add("card", "text-center", "w-25", "mx-auto","mt-4");
 
  let cardHeader = document.createElement("div");
- cardHeader.classList.add("card-header");
+ cardHeader.classList.add("card-header", "bg-dark", "text-light");
 
  cardHeader.innerText = mountain.name;
 
  let cardBody = document.createElement("div")
- cardBody.classList.add("card-body");
+ cardBody.classList.add("card-body","bg-dark", "text-light");
 
  let cardImage = document.createElement("img");
- cardImage.classList.add("card-img-top", "card-img-fit");
+ cardImage.classList.add("card-img-top","card-img-fit");
 
 
  cardImage.src = `images/${mountain.img}`;
@@ -99,26 +88,19 @@ cardBody.appendChild(cardImage);
 cardBody.appendChild(cardText);
 
 let footer1= document.createElement("div")
-footer1.classList.add("card-footer", "text-body-secondary");
+footer1.classList.add("card-footer", "bg-secondary");
 
 footer1.innerText = `Elevation : ${mountain.elevation}`;
 
 let footer2= document.createElement("div")
-footer2.classList.add("card-footer", "text-body-secondary");
+footer2.classList.add("card-footer", "bg-secondary");
 
 footer2.innerText = `Effort : ${mountain.effort}`;
-
-let footer3= document.createElement("div")
-footer3.classList.add("card-footer", "text-body-secondary");
-
-
-footer3.innerText = mountain.coords
 
 wholeCard.appendChild(cardHeader);
 wholeCard.appendChild(cardBody);
 wholeCard.appendChild(footer1);
 wholeCard.appendChild(footer2);
-wholeCard.appendChild(footer3);
 
 mountainDiv.appendChild(wholeCard);
 
