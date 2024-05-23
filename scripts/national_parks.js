@@ -7,25 +7,45 @@ window.onload = () => {
     initTypeSelect();
 
 
+    // grabbing the radio buttons off the html
+    let locationRadio = document.querySelector("#location");
+    
+    let typeRadio = document.querySelector("#type");
+
 
     //Grabbing the dropdowns individually from the html page
     let selectByLocation = document.querySelector("#selectPark");
 
     let selectByType = document.querySelector("#selectType");
 
-    //grabbing our buttons off the html page
-    let locationButton = document.querySelector("#location");
-
-    let parkTypeButton = document.querySelector("#type");
 
     //once a option on the drop down is chosen the information will get displayed
     selectByLocation.addEventListener("change", getInfoOffList);
 
     selectByType.addEventListener("change", gettypeOffList);
 
+    hideElement("#selectPark");
+    hideElement("#selectType");
 
+    
+//adding the hide and show function
+    locationRadio.addEventListener("click", hideShowRadio);
+
+     typeRadio.addEventListener("click", hideShowRadio);
 
 }
+//adding a function to show and hide the dropdowns depending on what button you choose
+function hideShowRadio(event){
+
+if(event.target.value === "type"){
+    showElement("#selectType");
+    hideElement("#selectPark");
+}else{
+    hideElement("#selectPark");
+    showElement("#selectType");
+    }
+}
+
 function getInfoOffList(event) {
 
     //get the selected information from the dropdown which is also the event.target
@@ -255,3 +275,28 @@ function buildTableRow(tableBody, chosen) {
 
 
 
+
+// //This function will hide or show an HTML element on the page
+// //Just pass it the id of the element you want to show/hide
+// function hideOrShowElement(someSelector) {
+//     let el = document.querySelector(someSelector);
+//     if (el.style.display === "none") {
+//         el.style.display = "block";
+//     } else {
+//         el.style.display = "none";
+//     }
+// }
+
+// //This function will hide an HTML element on the page
+// //Just pass it the id of the element you want to hide
+// function hideElement(someSelector) {
+//         let el = document.querySelector(someSelector);
+//         el.style.display = "none";
+//     }
+    
+//     //This function will show an HTML element on the page
+//     //Just pass it the id of the element you want to show
+//     function showElement(someSelector) {
+//         let el = document.querySelector(someSelector);
+//         el.style.display = "block";
+//     }
