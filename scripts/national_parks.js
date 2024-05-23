@@ -9,7 +9,7 @@ window.onload = () => {
 
     // grabbing the radio buttons off the html
     let locationRadio = document.querySelector("#location");
-    
+
     let typeRadio = document.querySelector("#type");
 
 
@@ -27,23 +27,24 @@ window.onload = () => {
     hideElement("#selectPark");
     hideElement("#selectType");
 
-    
-//adding the hide and show function
+
+    //adding the hide and show function
     locationRadio.addEventListener("click", hideShowRadio);
 
-     typeRadio.addEventListener("click", hideShowRadio);
+    typeRadio.addEventListener("click", hideShowRadio);
 
 }
 //adding a function to show and hide the dropdowns depending on what button you choose
 function hideShowRadio(event){
 
-if(event.target.value === "type"){
-    showElement("#selectType");
-    hideElement("#selectPark");
-}else{
-    hideElement("#selectPark");
-    showElement("#selectType");
+    if(event.target.value === "type"){
+        showElement("#selectType");
+        hideElement("#selectPark");
+    }else{
+        showElement("#selectPark");
+        hideElement("#selectType");
     }
+
 }
 
 function getInfoOffList(event) {
@@ -274,29 +275,16 @@ function buildTableRow(tableBody, chosen) {
 }
 
 
+//This function will hide an HTML element on the page
+//Just pass it the id of the element you want to hide
+function hideElement(someSelector) {
+    let el = document.querySelector(someSelector);
+    el.style.display = "none";
+}
 
-
-// //This function will hide or show an HTML element on the page
-// //Just pass it the id of the element you want to show/hide
-// function hideOrShowElement(someSelector) {
-//     let el = document.querySelector(someSelector);
-//     if (el.style.display === "none") {
-//         el.style.display = "block";
-//     } else {
-//         el.style.display = "none";
-//     }
-// }
-
-// //This function will hide an HTML element on the page
-// //Just pass it the id of the element you want to hide
-// function hideElement(someSelector) {
-//         let el = document.querySelector(someSelector);
-//         el.style.display = "none";
-//     }
-    
-//     //This function will show an HTML element on the page
-//     //Just pass it the id of the element you want to show
-//     function showElement(someSelector) {
-//         let el = document.querySelector(someSelector);
-//         el.style.display = "block";
-//     }
+//This function will show an HTML element on the page
+//Just pass it the id of the element you want to show
+function showElement(someSelector) {
+    let el = document.querySelector(someSelector);
+    el.style.display = "block";
+}
