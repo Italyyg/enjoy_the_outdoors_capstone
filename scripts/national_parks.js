@@ -21,17 +21,21 @@ window.onload = () => {
 
     //once a option on the drop down is chosen the information will get displayed
     selectByLocation.addEventListener("change", getInfoOffList);
+    selectByLocation.addEventListener("change",showorhideimage);
 
     selectByType.addEventListener("change", gettypeOffList);
 
     hideElement("#selectPark");
     hideElement("#selectType");
-
+    
 
     //adding the hide and show function
     locationRadio.addEventListener("click", hideShowRadio);
 
     typeRadio.addEventListener("click", hideShowRadio);
+
+
+    
 
 }
 //adding a function to show and hide the dropdowns depending on what button you choose
@@ -44,6 +48,18 @@ function hideShowRadio(event){
         showElement("#selectPark");
         hideElement("#selectType");
     }
+
+}
+function showorhideimage(event){
+
+    if(event.target.length === 0){
+
+    showElement("#imageNational");
+ }else{
+
+    hideElement("#imageNational");
+ }
+
 
 }
 
@@ -180,6 +196,8 @@ function initTypeSelect() {
     //this is what we get back in the js when we ask for it
     defaultOption.value = "0";
 
+    selectByType.length="0";
+
 
     //add the option we created to the dropdown
     selectByType.appendChild(defaultOption);
@@ -267,8 +285,7 @@ function buildTableRow(tableBody, chosen) {
     if (!chosen.Visit) {
         cell5.innerHTML = "N/A"
     } else {
-        cell5.innerHTML = chosen.Visit;
-
+        cell5.innerHTML = chosen.Visit
 
 
     }
@@ -288,3 +305,5 @@ function showElement(someSelector) {
     let el = document.querySelector(someSelector);
     el.style.display = "block";
 }
+
+

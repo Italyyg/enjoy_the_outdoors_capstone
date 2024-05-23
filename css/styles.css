@@ -1,3 +1,4 @@
+
 #hero {
     height: 440px;
     background-size: cover;
@@ -13,3 +14,30 @@
     margin-left: 40px;
     margin-right: 40px;
 }
+.image-container {
+    position:relative;
+    display: inline-block;
+
+  }
+  
+  .image-container img {
+    display: block;
+    width: 92%;
+    height: auto;
+    margin-left: 360px;;
+    margin-right: auto;
+  }
+  
+  .overlay-text {
+    position: absolute;
+    top: 50%; 
+    left: 90%; 
+    transform: translate(-50%, -50%);  
+    color: #000000; 
+    padding: 10px 20px; 
+    font-size: 26px; 
+    text-align: center;
+    font-family:Arial, Helvetica, sans-serif
+
+  }
+  
