@@ -97,10 +97,18 @@ footer2.classList.add("card-footer", "bg-secondary");
 
 footer2.innerText = `Effort : ${mountain.effort}`;
 
+let footer3= document.createElement("div")
+footer3.classList.add("card-footer", "bg-secondary");
+
+footer3.innerText=`Lat:${mountain.coords.lat} Long: ${mountain.coords.lng}`;
+
+
+
 wholeCard.appendChild(cardHeader);
 wholeCard.appendChild(cardBody);
 wholeCard.appendChild(footer1);
 wholeCard.appendChild(footer2);
+wholeCard.appendChild(footer3);
 
 mountainDiv.appendChild(wholeCard);
 
