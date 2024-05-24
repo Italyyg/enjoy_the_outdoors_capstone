@@ -118,7 +118,7 @@ function getInfoOffList(event) {
         if (!data.Visit) {
             cell5.innerHTML = "N/A"
         } else {
-            cell5.innerHTML = data.Visit;
+            cell5.innerHTML = "<a href='" + data.Visit + "' target='_blank'>" + data.Visit + "</a>";
         }
     }
 
